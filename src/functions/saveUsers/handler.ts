@@ -33,7 +33,7 @@ const saveUser: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
     };
     await dynamodb.put(params).promise();
     return formatJSONResponse({
-      message: `El usuario ${nombre} con pelicula favorita  ${titulo} a sido creado`,
+      message: `El usuario ${nombre} con pelicula favorita  ${titulo} a sido creado exitosamente`,
     });
   } catch (error) {
     console.log(error);
