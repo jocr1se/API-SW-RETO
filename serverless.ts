@@ -2,18 +2,15 @@ import type { AWS } from "@serverless/typescript";
 
 import saveUser from "@functions/saveUsers";
 import getUsers from "@functions/getUsers";
+import getPersonaje from "@functions/getPersonaje";
 
 const SERVICE_NAME = "api-reto-sw";
 const DYNAMO_TABLE = `${SERVICE_NAME}-db`;
-
+const URI_SW = `https://swapi.py4e.com/api/`;
 const serverlessConfiguration: AWS = {
   service: SERVICE_NAME,
   frameworkVersion: "3",
-  plugins: [
-    "serverless-esbuild",
-    "serverless-auto-swagger",
-    "serverless-offline",
-  ],
+  plugins: ["serverless-esbuild", "serverless-offline"],
   provider: {
     name: "aws",
     runtime: "nodejs14.x",
@@ -25,6 +22,7 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
       DYNAMO_TABLE,
+      URI_SW,
     },
     iamRoleStatements: [
       {
@@ -41,7 +39,7 @@ const serverlessConfiguration: AWS = {
     ],
   },
   // import the function via paths
-  functions: { saveUser, getUsers },
+  functions: { saveUser, getUsers, getPersonaje },
   package: { individually: true },
   custom: {
     esbuild: {

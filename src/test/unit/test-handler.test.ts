@@ -4,7 +4,7 @@ const urlGet = "https://5ju4xm2e9a.execute-api.us-east-1.amazonaws.com/dev";
 const urlPost = "https://5ju4xm2e9a.execute-api.us-east-1.amazonaws.com/dev";
 
 const objTest = {
-  nombre: "Celeste",
+  nombre: "Pedro",
   apellido: "Diaz",
   edad: 33,
 };
